@@ -1,6 +1,7 @@
 package com.ufal.es_clinic_project.paciente;
 
 import com.ufal.es_clinic_project.endereco.Endereco;
+import com.ufal.es_clinic_project.paciente.dto.DadosAtualizacaoPaciente;
 import com.ufal.es_clinic_project.paciente.dto.DadosRegistroPaciente;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,5 +34,24 @@ public class Paciente {
         this.cpf = data.cpf();
         this.ativo = true;
         this.endereco = new Endereco(data.endereco());
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoPaciente data) {
+        if(data.nome() != null) {
+            this.nome = data.nome();
+        }
+
+        if(data.email() != null) {
+            this.email = data.email();
+        }
+
+        if(data.telefone() != null) {
+            this.telefone = data.telefone();
+        }
+
+        if(data.endereco() != null) {
+            endereco.atualizarInformacoes(data.endereco());
+        }
+
     }
 }

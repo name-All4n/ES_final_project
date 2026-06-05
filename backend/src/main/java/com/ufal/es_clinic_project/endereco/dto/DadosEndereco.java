@@ -1,4 +1,4 @@
-package com.ufal.es_clinic_project.endereco;
+package com.ufal.es_clinic_project.endereco.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

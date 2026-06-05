@@ -1,6 +1,6 @@
 package com.ufal.es_clinic_project.medico.dto;
 
-import com.ufal.es_clinic_project.endereco.DadosEndereco;
+import com.ufal.es_clinic_project.endereco.dto.DadosEndereco;
 import com.ufal.es_clinic_project.medico.Especialidade;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
