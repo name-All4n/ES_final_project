@@ -1,6 +1,7 @@
 package com.ufal.es_clinic_project.medico;
 
 import com.ufal.es_clinic_project.endereco.Endereco;
+import com.ufal.es_clinic_project.medico.dto.DadosAtualizacaoMedico;
 import com.ufal.es_clinic_project.medico.dto.DadosRegistroMedico;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,5 +35,24 @@ public class Medico {
         this.especialidade = data.especialidade();
         this.endereco = new Endereco(data.endereco());
         this.ativo = true;
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoMedico data) {
+        if (data.nome() != null) {
+            this.nome = data.nome();
+        }
+        if (data.email() != null) {
+            this.email = data.email();
+        }
+        if (data.telefone() != null) {
+            this.telefone = data.telefone();
+        }
+        if (data.endereco() != null) {
+            this.endereco.atualizarInformacoes(data.endereco());
+        }
+    }
+
+    public void delete() {
+        this.ativo = false;
     }
 }
