@@ -26,10 +26,18 @@ public class Usuario implements UserDetails {
 
     private String login;
     private String senha;
+    @Enumerated(EnumType.STRING)
+    private Papel papel;
+
+    public Usuario(String login, String senha, Papel papel) {
+        this.login = login;
+        this.senha = senha;
+        this.papel = papel;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + papel.name()));
     }
 
     @Override
