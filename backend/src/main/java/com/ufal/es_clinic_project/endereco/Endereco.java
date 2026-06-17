@@ -1,6 +1,7 @@
 package com.ufal.es_clinic_project.endereco;
 
 import com.ufal.es_clinic_project.endereco.dto.DadosEndereco;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +18,7 @@ public class Endereco {
     private String bairro;
     private String rua;
     private String cep;
+    @Column(length = 2)
     private String uf;
     private String complemento;
     private String numero;
