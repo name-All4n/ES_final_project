@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@Table(name="doctors")
+@Table(name="medicos")
 @Entity
 public class Medico {
     @Id

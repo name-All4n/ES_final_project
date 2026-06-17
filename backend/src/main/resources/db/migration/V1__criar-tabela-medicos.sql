@@ -1,4 +1,4 @@
-CREATE TABLE doctors (
+CREATE TABLE medicos (
     id           BIGSERIAL    PRIMARY KEY,
     nome         VARCHAR(100) NOT NULL,
     email        VARCHAR(150) NOT NULL UNIQUE,
