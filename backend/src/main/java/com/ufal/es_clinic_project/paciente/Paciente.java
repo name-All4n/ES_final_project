@@ -28,7 +28,7 @@ public class Paciente {
     private boolean ativo;
 
     public Paciente(DadosRegistroPaciente data) {
-        this.nome = data.Nome();
+        this.nome = data.nome();
         this.email = data.email();
         this.telefone = data.telefone();
         this.cpf = data.cpf();
@@ -39,10 +39,6 @@ public class Paciente {
     public void atualizarInformacoes(DadosAtualizacaoPaciente data) {
         if(data.nome() != null) {
             this.nome = data.nome();
-        }
-
-        if(data.email() != null) {
-            this.email = data.email();
         }
 
         if(data.telefone() != null) {

@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosRegistroPaciente(@NotBlank
-                                    String Nome,
+                                    String nome,
                                     @NotBlank
                                     String email,
                                     @NotBlank

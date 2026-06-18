@@ -41,9 +41,6 @@ public class Medico {
         if (data.nome() != null) {
             this.nome = data.nome();
         }
-        if (data.email() != null) {
-            this.email = data.email();
-        }
         if (data.telefone() != null) {
             this.telefone = data.telefone();
         }
