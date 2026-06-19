@@ -1,4 +1,4 @@
-package com.ufal.es_clinic_project.consulta;
+package com.ufal.es_clinic_project.consulta.dto;
 
 import com.ufal.es_clinic_project.medico.Especialidade;
 import jakarta.validation.constraints.Future;

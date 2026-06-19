@@ -1,5 +1,7 @@
-package com.ufal.es_clinic_project.consulta;
+package com.ufal.es_clinic_project.consulta.validacoes;
 
+import com.ufal.es_clinic_project.consulta.ConsultaRepository;
+import com.ufal.es_clinic_project.consulta.dto.DadosAgendamentoConsulta;
 import com.ufal.es_clinic_project.infra.exception.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
