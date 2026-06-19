@@ -11,7 +11,7 @@ CREATE TABLE pacientes (
     bairro      VARCHAR(100) NOT NULL,
     rua         VARCHAR(150) NOT NULL,
     cep         VARCHAR(8)   NOT NULL,
-    uf          CHAR(2)      NOT NULL,
+    uf          VARCHAR(2)   NOT NULL,
     complemento VARCHAR(100),
     numero      VARCHAR(10)
 );

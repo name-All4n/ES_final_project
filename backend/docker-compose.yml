@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:16
+    container_name: es_clinic_db
+    environment:
+      POSTGRES_DB: ES_clinica_bd
+      POSTGRES_USER: user_clinica
+      POSTGRES_PASSWORD: papaestc
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user_clinica -d ES_clinica_bd"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: es_clinic_app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/ES_clinica_bd
+      DB_USERNAME: user_clinica
+      DB_PASSWORD: papaestc
+      JWT_SECRET: clinica-medica-secret-dev
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:
