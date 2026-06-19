@@ -1,5 +1,6 @@
 package com.ufal.es_clinic_project.usuario;
 
+import com.ufal.es_clinic_project.medico.Medico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -28,11 +29,21 @@ public class Usuario implements UserDetails {
     private String senha;
     @Enumerated(EnumType.STRING)
     private Papel papel;
+    @OneToOne
+    @JoinColumn(name = "medico_id")
+    private Medico medico;
 
     public Usuario(String login, String senha, Papel papel) {
         this.login = login;
         this.senha = senha;
         this.papel = papel;
+    }
+
+    public Usuario(String login, String senha, Papel papel, Medico medico) {
+        this.login = login;
+        this.senha = senha;
+        this.papel = papel;
+        this.medico = medico;
     }
 
     @Override

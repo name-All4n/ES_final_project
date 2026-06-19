@@ -23,15 +23,7 @@ public class AutenticacaoController {
     @PostMapping("/login")
     public ResponseEntity<DadosToeknJWT> efetuarLogin(@RequestBody @Valid DadosAutenticacao data) {
         System.out.println("CHEGOU NO CONTROLLER");
-        Authentication authenticationn =
-                authenticationManager.authenticate(
-                        new UsernamePasswordAuthenticationToken(
-                                data.login(),
-                                data.senha()
-                        )
-                );
 
-        System.out.println("AUTENTICOU");
         var authToken = new UsernamePasswordAuthenticationToken(data.login(), data.senha());
         var authentication = authenticationManager.authenticate(authToken);
         var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());

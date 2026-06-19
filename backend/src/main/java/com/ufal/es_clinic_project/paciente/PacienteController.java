@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -23,6 +24,7 @@ public class PacienteController {
     PacienteRepository pacienteRepository;
 
     @PostMapping
+    @Secured({"ROLE_ADMINISTRADOR", "ROLE_RECEPCIONISTA"})
     public ResponseEntity registrar(@RequestBody @Valid DadosRegistroPaciente data, UriComponentsBuilder uriBuilder){
         var paciente = new Paciente(data);
         pacienteRepository.save(paciente);
@@ -31,13 +33,15 @@ public class PacienteController {
     }
 
     @GetMapping
-    public ResponseEntity <Page<DadosListagemPaciente>> list(@PageableDefault (page = 10, size = 10, sort = {"nome"}) Pageable paginacao){
+    @Secured({"ROLE_ADMINISTRADOR", "ROLE_RECEPCIONISTA"})
+    public ResponseEntity <Page<DadosListagemPaciente>> list(@PageableDefault (size = 10, sort = {"nome"}) Pageable paginacao){
         var pagina = pacienteRepository.findByAtivoTrue(paginacao).map(DadosListagemPaciente::new);
         return ResponseEntity.ok(pagina);
     }
 
     @PutMapping
     @Transactional
+    @Secured({"ROLE_ADMINISTRADOR", "ROLE_RECEPCIONISTA"})
     public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoPaciente data){
         var paciente = pacienteRepository.getReferenceById(data.id());
         paciente.atualizarInformacoes(data);
@@ -46,6 +50,7 @@ public class PacienteController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    @Secured({"ROLE_ADMINISTRADOR", "ROLE_RECEPCIONISTA"})
     public ResponseEntity delete(@PathVariable Long id){
         var paciente = pacienteRepository.getReferenceById(id);
         paciente.delete();
@@ -53,6 +58,7 @@ public class PacienteController {
     }
 
     @GetMapping("/{id}")
+    @Secured({"ROLE_ADMINISTRADOR", "ROLE_RECEPCIONISTA"})
     public ResponseEntity detalhesPaciente(@PathVariable Long id){
         var paciente = pacienteRepository.getReferenceById(id);
         return ResponseEntity.ok(new DadosDatalhePaciente(paciente));

@@ -9,6 +9,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record DadosRegistroMedico(@NotBlank String nome,
                                   @NotBlank @Email String email,
+                                  @NotBlank String senha,
                                   @NotBlank String telefone,
                                   @NotBlank String crm,
                                   @NotNull Especialidade especialidade,
