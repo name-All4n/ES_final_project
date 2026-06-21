@@ -11,6 +11,7 @@ import java.util.Optional;
 
 public interface MedicoRepository extends JpaRepository<Medico,Long> {
     Page<Medico> findAllByAtivoTrue(Pageable paginacao);
+    long countByAtivoTrue();
 
     @Query("""
             SELECT m FROM Medico m
